@@ -1,0 +1,17 @@
+name: 'redmine-plugin-test-action'
+description: 'This action is to test for Redmine plugin.'
+author: 'Tatsuya Saito'
+inputs:
+  plugin-name:
+    description: 'The name of the plguin to test.'
+    required: true
+  redmine_version:
+    description: 'The version of Redmine to test.'
+    required: true
+  redmine_repo:
+    description: 'The source code repository of Redmine to download.'
+    required: false
+outputs:
+runs:
+  using: 'node12'
+  main: 'lib/redmine-plugin-test.js'
