@@ -17,4 +17,4 @@ runs:
   main: 'lib/redmine-plugin-test.js'
 branding:
   icon: 'check-square'
-  color: 'blue'
+  color: 'green'
