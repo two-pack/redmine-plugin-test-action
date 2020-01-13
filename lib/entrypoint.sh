@@ -5,7 +5,6 @@ echo Start redmine-plugin-test-action
 echo Set environment variables
 set -xe
 PLUGIN_REPO=https://github.com/${GITHUB_REPOSITORY}.git
-PLUGIN_BRANCH=$(echo ${GITHUB_REF#refs/heads/})
 WORKSPACE=/var/lib/redmine
 TRACE=--trace
 
