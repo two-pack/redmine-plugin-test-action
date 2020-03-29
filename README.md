@@ -17,6 +17,10 @@ It prepares a environment for tests and runs rake command with `redmine:plugins:
 
 **Required** The version of Ruby to test, like **v2.6**. You can use matrix in your action.
 
+### `database`
+
+**Optional** The database of Redmine to test. You can choose from **sqlite3 (default), postgresql, mysql**, and can use matrix in your action.
+
 ## Outputs
 
 Nothing.
@@ -30,10 +34,11 @@ Nothing.
     plugin_name: redmine_auto_assign_group
     redmine_version: v4.1
     ruby_version: v2.6
+    database: sqlite3
 ```
 
 ## Notice
 
-v1 uses [Javascript action](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-a-javascript-action).  
-v2 uses [Docker container action](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-a-docker-container-action) for performance improvement. v2's parameters is diffrent from v1, so you MUST change action.yml of your workflow if you already used v1.
+* v1 used [Javascript action](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-a-javascript-action). But it's already **not updated**.  
+* v2 uses [Docker container action](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-a-docker-container-action) for performance improvement. v2's parameters is **diffrent from v1**, so you **MUST** change action.yml of your workflow if you already used v1.
 
