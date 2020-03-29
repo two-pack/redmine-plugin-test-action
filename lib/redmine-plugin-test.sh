@@ -4,6 +4,7 @@ set -xe
 PLUGIN_NAME=$1
 REDMINE_VERSION=(${2/v/})
 RUBY_VERSION=(${3/v/})
+DATABASE=$4
 if [ "${GITHUB_HEAD_REF}" = "" ]; then
   PLUGIN_BRANCH=$(echo ${GITHUB_REF#refs/heads/})
 else
@@ -17,4 +18,5 @@ docker build -t redmine-plugin-test \
 docker run -e "GITHUB_REPOSITORY=${GITHUB_REPOSITORY}" \
            -e "PLUGIN_NAME=${PLUGIN_NAME}" \
            -e "PLUGIN_BRANCH=${PLUGIN_BRANCH}" \
+           -e "DATABASE=${DATABASE}" \
            -t redmine-plugin-test
