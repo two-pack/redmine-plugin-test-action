@@ -12,7 +12,7 @@ inputs:
     description: 'The version of ruby to test.'
     required: true
   database:
-    description: 'The database with Redmine to test.'
+    description: 'The database of Redmine to test.'
 outputs:
 runs:
   using: 'node12'
