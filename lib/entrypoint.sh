@@ -12,6 +12,15 @@ echo Prepare database
 cd ${WORKSPACE}
 if [ "${DATABASE}" = "postgresql" ]; then
   service postgresql start
+  count=0
+  until sudo -u postgres psql -U "postgres" -c '\q'; do
+    if [ ${count} -eq 10 ]; then
+      echo "Failed to start postgresql."
+      exit 1
+    fi
+    count=$((count + 1))
+    sleep 1
+  done
   cp config/database.yml.postgresql config/database.yml
 elif [ "${DATABASE}" = "mysql" ]; then
   service mysql start
