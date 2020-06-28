@@ -14,7 +14,7 @@ if [ "${DATABASE}" = "postgresql" ]; then
   service postgresql start
   count=0
   until sudo -u postgres psql -U "postgres" -c '\q'; do
-    if [ ${count} -eq 10 ]; then
+    if [ ${count} -eq 60 ]; then
       echo "Failed to start postgresql."
       exit 1
     fi
