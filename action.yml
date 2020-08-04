@@ -13,7 +13,6 @@ inputs:
     required: true
   database:
     description: 'The database of Redmine to test.'
-outputs:
 runs:
   using: 'node12'
   main: 'lib/redmine-plugin-test.js'
