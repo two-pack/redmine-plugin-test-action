@@ -6,7 +6,7 @@ REDMINE_VERSION=(${2/v/})
 RUBY_VERSION=(${3/v/})
 DATABASE=$4
 if [ "${GITHUB_HEAD_REF}" = "" ]; then
-  PLUGIN_BRANCH=$(echo ${GITHUB_REF#refs/heads/})
+  PLUGIN_BRANCH=$(echo ${GITHUB_REF#refs/*/})
 else
   PLUGIN_BRANCH=${GITHUB_HEAD_REF}
 fi
