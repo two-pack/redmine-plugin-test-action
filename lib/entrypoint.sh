@@ -6,6 +6,7 @@ echo Set environment variables
 set -xe
 PLUGIN_REPO=https://github.com/${GITHUB_REPOSITORY}.git
 WORKSPACE=/var/lib/redmine
+PLUGIN_WORKSPACE=/var/lib/redmine-plugin
 TRACE=--trace
 
 echo Prepare database
@@ -34,8 +35,15 @@ google-chrome --version
 chromedriver --version
 RAILS_ENV=test bin/about
 
-echo Install plguin
-git clone -b ${PLUGIN_BRANCH} --depth 1 ${PLUGIN_REPO} ${WORKSPACE}/plugins/${PLUGIN_NAME}
+echo Install plugin
+
+# If the plugin's code is already cloned in PLUGIN_WORKSPACE, we'll use it. Otherwise, we'll clone a fresh copy.
+if [ -d $PLUGIN_WORKSPACE/.git ]; then
+  ln -s $PLUGIN_WORKSPACE ${WORKSPACE}/plugins/${PLUGIN_NAME}
+else
+  git clone -b ${PLUGIN_BRANCH} --depth 1 ${PLUGIN_REPO} ${WORKSPACE}/plugins/${PLUGIN_NAME}
+fi
+
 bundle install --path vendor/bundle
 bundle exec rake redmine:plugins:migrate $TRACE
 
