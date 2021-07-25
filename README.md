@@ -3,6 +3,11 @@
 This action is to test for [Redmine](https://www.redmine.org/) plugin.
 It prepares a environment for tests and runs rake command with `redmine:plugins:test`.
 
+## Attention
+
+This plugin uses redmine-test-image docker image, and Autobuilds to support Redmine and ruby versions. However, the free Docker Hub Autobuilds will end on Monday, July 26, 2021.
+Therefore, tests in the latest environment will not be provided in a timely.
+
 ## Inputs
 
 ### `plugin_name`
